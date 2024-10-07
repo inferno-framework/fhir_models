@@ -1,5 +1,5 @@
 module FHIR
-  module build.fhir.org
+  module R6
     class DeviceMetric < Model
       include FHIR::Hashable
       include FHIR::Json

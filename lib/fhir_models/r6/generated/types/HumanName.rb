@@ -1,5 +1,5 @@
 module FHIR
-  module build.fhir.org
+  module R6
     class HumanName < Model
       include FHIR::Hashable
       include FHIR::Json
