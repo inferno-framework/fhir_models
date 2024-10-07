@@ -42,7 +42,6 @@ module FHIR
         template.hierarchy = hierarchy
         template.kind = structure_def['kind']
         template.fhir_version = ig_resources.ig_metadata.shortName
-        template.fhir_version = 'R6' if ig_resources.ig_metadata.fhirVersions.include?('6.0.0-ballot2')
         return template if structure_def['snapshot'].nil? || structure_def['snapshot']['element'].nil?
 
         multiple_data_types = {}
