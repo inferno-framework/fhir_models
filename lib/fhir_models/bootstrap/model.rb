@@ -39,8 +39,8 @@ module FHIR
     def method_missing(method_name, *_args, &_block)
       if defined?(self.class::MULTIPLE_TYPES) && self.class::MULTIPLE_TYPES[method_name.to_s]
         self.class::MULTIPLE_TYPES[method_name.to_s].each do |type|
-          type[0] = type[0].upcase
-          value = send("#{method_name}#{type}".to_sym)
+          capitalized_type = "#{type[0].upcase}#{type[1..]}"
+          value = send("#{method_name}#{capitalized_type}".to_sym)
           return value unless value.nil?
         end
         return nil
@@ -284,10 +284,10 @@ module FHIR
     end
     deprecate :is_primitive?, :primitive?
 
-    def check_binding_uri(uri, value)
+    def check_binding_uri(uri_with_version, value)
       valid = false
       # Strip off the |4.0.0 or |4.0.1 or |2014-03-26 or similar from the ends of URLs
-      uri&.gsub!(/\|[A-Za-z0-9.-]*/, '')
+      uri = uri_with_version&.gsub(/\|[A-Za-z0-9.-]*/, '')
       valueset = versioned_fhir_module::Definitions.get_codes(uri)
 
       if ['http://hl7.org/fhir/ValueSet/mimetypes', 'http://www.rfc-editor.org/bcp/bcp13.txt'].include?(uri)
