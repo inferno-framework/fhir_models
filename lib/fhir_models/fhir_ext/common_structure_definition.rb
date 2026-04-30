@@ -78,7 +78,7 @@ module FHIR
         verify_element(element, json)
       end
 
-      @errors.size.zero?
+      @errors.empty?
     end
     deprecate :is_valid_json?, :valid_json?
 
@@ -410,7 +410,7 @@ module FHIR
       if ['http://hl7.org/fhir/ValueSet/mimetypes', 'http://www.rfc-editor.org/bcp/bcp13.txt'].include?(vs_uri)
         matches = MIME::Types[value]
         known_weird = ['text/cql', 'application/cql+text', 'application/hl7-v2'].include?(value)
-        if (matches.nil? || matches.size.zero? || known_weird) && !some_type_of_xml_or_json?(value)
+        if (matches.nil? || matches.empty? || known_weird) && !some_type_of_xml_or_json?(value)
           @errors << "#{element.path} has invalid mime-type: '#{value}'"
           matching_type -= 1 if element.binding.strength == 'required'
         end

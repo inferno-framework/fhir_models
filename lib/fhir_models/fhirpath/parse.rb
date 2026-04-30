@@ -36,7 +36,7 @@ module FHIRPath
     end
     # we may need to reassemble quoted strings again
     reassemble_strings(tokens)
-    tokens.delete_if { |token| (token.length.zero? || (token.is_a?(String) && token.match(/\S/).nil?)) }
+    tokens.delete_if { |token| token.empty? || (token.is_a?(String) && token.match(/\S/).nil?) }
     FHIR.logger.debug "TOKENS: #{tokens}"
     tokens
   end

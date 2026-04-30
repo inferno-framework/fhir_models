@@ -140,7 +140,7 @@ module FHIR
       end
       @errors.flatten!
       @warnings.flatten!
-      @errors.size.zero?
+      @errors.empty?
     end
     deprecate :is_compatible?, :compatible?
 
@@ -225,7 +225,7 @@ module FHIR
       x_only = x_profiles - y_profiles
       shared = x_profiles - x_only
 
-      if !shared.nil? && shared.size.zero?
+      if !shared.nil? && shared.empty?
         # same name, but different profiles
         # maybe the profiles are the same, just with different URLs...
         # ... so we have to compare them, if we can.
@@ -269,7 +269,7 @@ module FHIR
       y_only = y_types - x_types
       shared = x_types - x_only
 
-      if !shared.nil? && shared.size.zero? && !x_types.empty? && !y_types.empty? && !x.constraint.empty? && !y.constraint.empty?
+      if !shared.nil? && shared.empty? && !x_types.empty? && !y_types.empty? && !x.constraint.empty? && !y.constraint.empty?
         @errors << @finding.error(x.path.to_s, 'type.code', 'Incompatible data types', x_types.to_s, y_types.to_s)
       end
       if !x_only.nil? && !x_only.empty?
@@ -359,7 +359,7 @@ module FHIR
       y_only = y_constraints - x_constraints
       shared = x_constraints - x_only
 
-      if !shared.nil? && shared.size.zero? && !x.constraint.empty? && !y.constraint.empty?
+      if !shared.nil? && shared.empty? && !x.constraint.empty? && !y.constraint.empty?
         @errors << @finding.error(x.path.to_s, 'constraint.xpath', 'Incompatible constraints', x_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s, y_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s)
       end
       if !x_only.nil? && !x_only.empty?

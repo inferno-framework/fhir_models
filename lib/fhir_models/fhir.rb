@@ -74,7 +74,7 @@ module FHIR
       !(value.to_s =~ /\A[A-Za-z0-9\-.]{1,64}\Z/).nil?
     when 'xhtml'
       fragment = Nokogiri::HTML::DocumentFragment.parse(value)
-      value.is_a?(String) && fragment.errors.size.zero?
+      value.is_a?(String) && fragment.errors.empty?
     when 'unsignedint'
       !(value.to_s =~ /\A(0|([1-9][0-9]*))\Z/).nil?
     when 'positiveint'

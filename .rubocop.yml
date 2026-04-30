@@ -27,6 +27,8 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+Style/AccessModifierDeclarations:
+  Enabled: false
 Style/ModuleFunction:
   Enabled: false
 Style/SymbolArray:

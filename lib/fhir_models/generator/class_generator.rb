@@ -96,7 +96,7 @@ module FHIR
           if !element['type'].nil?
             # profiles contains a list of profiles if the datatype is Reference or Extension
             profiles = []
-            element['type'].select { |t| t['code'] == 'Reference' || t['code'] == 'Extension' }.each do |data_type|
+            element['type'].select { |t| ['Reference', 'Extension'].include?(t['code']) }.each do |data_type|
               profiles << data_type['targetProfile']
             end
             profiles.reject!(&:nil?)

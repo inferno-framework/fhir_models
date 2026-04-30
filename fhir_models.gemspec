@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 3.0.0'
-  spec.add_dependency 'nokogiri', '>= 1.11.4'
+  spec.add_dependency 'nokogiri', '>= 1.19.1'
   spec.add_dependency 'date_time_precision', '>= 0.8'
   spec.add_dependency 'bcp47', '>= 0.3'
   spec.add_dependency 'mime-types', '>= 3.0'
@@ -35,7 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'simplecov', '~> 0.17.0'
   spec.add_development_dependency 'nokogiri-diff'
-  spec.add_development_dependency 'rubocop', '1.23.0'
   spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'guard-test'
 end

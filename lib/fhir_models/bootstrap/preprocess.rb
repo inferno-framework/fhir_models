@@ -92,7 +92,7 @@ module FHIR
 
       def self.remove_fhir_comments(hash)
         hash.delete('fhir_comments')
-        hash.each do |_key, value|
+        hash.each_value do |value|
           case value
           when Hash
             remove_fhir_comments(value)

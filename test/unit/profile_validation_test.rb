@@ -1,4 +1,5 @@
 require_relative '../test_helper'
+require 'ostruct'
 
 class ProfileValidationTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'ProfileValidationTest')

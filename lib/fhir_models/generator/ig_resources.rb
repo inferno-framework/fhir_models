@@ -124,7 +124,7 @@ module FHIR
               end
             end
           end
-          transformed_expansion[url].each { |_system, codes| codes.uniq! }
+          transformed_expansion[url].each_value(&:uniq!)
         end
         transformed_expansion[url]
       end

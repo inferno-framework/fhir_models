@@ -163,7 +163,7 @@ module FHIR
           errors.delete(typename) unless present.include?(typename)
         end
       end
-      errors.keep_if { |_k, v| (v && !v.empty?) }
+      errors.keep_if { |_k, v| v && !v.empty? }
     end
 
     # ----- validate a field -----
@@ -232,7 +232,7 @@ module FHIR
         end
         has_valid_code = false
         if meta['valid_codes']
-          meta['valid_codes'].each do |_key, codes|
+          meta['valid_codes'].each_value do |codes|
             has_valid_code = true unless (codes & the_codes).empty?
             break if has_valid_code
           end
@@ -287,7 +287,7 @@ module FHIR
     def check_binding_uri(uri, value)
       valid = false
       # Strip off the |4.0.0 or |4.0.1 or |2014-03-26 or similar from the ends of URLs
-      uri&.gsub!(/\|[A-Za-z0-9.\-]*/, '')
+      uri&.gsub!(/\|[A-Za-z0-9.-]*/, '')
       valueset = versioned_fhir_module::Definitions.get_codes(uri)
 
       if ['http://hl7.org/fhir/ValueSet/mimetypes', 'http://www.rfc-editor.org/bcp/bcp13.txt'].include?(uri)
@@ -332,7 +332,7 @@ module FHIR
       extension_source.select do |extension|
         name = extension.url.tr('-', '_').split('/').last
         anchor = name.split('#').last
-        (method_name.to_s == name || method_name.to_s == anchor)
+        [name, anchor].include?(method_name.to_s)
       end
     end
 
