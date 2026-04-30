@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fhir_models (5.0.0)
+    fhir_models (5.1.0)
       bcp47 (>= 0.3)
       date_time_precision (>= 0.8)
       mime-types (>= 3.0)
