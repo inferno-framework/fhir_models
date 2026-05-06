@@ -161,7 +161,7 @@ module FHIR
         f.write(doc.to_xml)
         f.close
 
-        # Remove the weird parantheses on xml example filenames
+        # Remove the weird parentheses on xml example filenames
         # we do this so they match the names of the json examples
         if filename.include?('(') && filename.include?(')')
           rename = filename.gsub(/\([A-Za-z0-9\-.]*\)/, '')

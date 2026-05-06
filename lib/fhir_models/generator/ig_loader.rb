@@ -69,7 +69,7 @@ module FHIR
         end
 
         if show_summary
-          puts "Extracted Primitve Types: #{ig_resources.primitive_types&.count}"
+          puts "Extracted Primitive Types: #{ig_resources.primitive_types&.count}"
           puts "Extracted Complex Types: #{ig_resources.complex_types&.count}"
           puts "Extracted Resource Definitions: #{ig_resources.resource_definitions&.count}"
           puts "Extracted Extension Definitions: #{ig_resources.extension_definitions&.count}"
