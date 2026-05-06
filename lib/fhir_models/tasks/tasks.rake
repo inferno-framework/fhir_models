@@ -141,7 +141,7 @@ namespace :fhir do
   task :invariants, [] do |_t, _args|
     # create a generator and load the definitions
     d = FHIR::Definitions
-    defs = d.get_complex_types + d.get_resource_definitions
+    defs = d.complex_types + d.resource_definitions
     invariants = {}
     defs.each do |structure_definition|
       structure_definition['snapshot']['element'].each do |element|
