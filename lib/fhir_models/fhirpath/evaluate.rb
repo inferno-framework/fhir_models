@@ -13,14 +13,14 @@ module FHIRPath
 
   # Get a value from a hash, with some special handling of
   # self references
-  def self.get(key, hash)
-    return @@context if ['$context', '$resource'].include?(key)
-    return @@parent if key == '$parent'
-    return 'http://unitsofmeasure.org' if key == '%ucum'
-    return 'http://snomed.info/sct' if key == '%sct'
-    return 'http://loinc.org' if key == '%loinc'
-    return key.gsub!(/\A\'|\'\Z/, '') if key.start_with?("'") && key.end_with?("'")
-    key.gsub!(/\A"|"\Z/, '') # remove quotes around path if they exist
+  def self.get(raw_key, hash)
+    return @@context if ['$context', '$resource'].include?(raw_key)
+    return @@parent if raw_key == '$parent'
+    return 'http://unitsofmeasure.org' if raw_key == '%ucum'
+    return 'http://snomed.info/sct' if raw_key == '%sct'
+    return 'http://loinc.org' if raw_key == '%loinc'
+    return raw_key.gsub(/\A\'|\'\Z/, '') if raw_key.start_with?("'") && raw_key.end_with?("'")
+    key = raw_key.gsub(/\A"|"\Z/, '') # remove quotes around path if they exist
     if hash.is_a?(Array)
       response = []
       hash.each do |e|
