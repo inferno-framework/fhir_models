@@ -128,7 +128,7 @@ module FHIR
           elsif value_set['compose'] && value_set['compose']['include']
             value_set['compose']['include'].each do |include_element|
               if include_element['system'] == system && include_element['concept']
-                include_element['concept'].each { |concept| reutrn concept['display'] if concept['code'] == code }
+                include_element['concept'].each { |concept| return concept['display'] if concept['code'] == code }
               end
             end
           end
