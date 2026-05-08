@@ -58,11 +58,11 @@ module FHIR
       !(formatted_value =~ /\A([0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))))))\Z/).nil?
     when 'date'
       !(value.to_s =~ /\A(-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?)\Z/).nil?
-      # NOTE: we don't try to instantiate and verify  a Date because ruby does not natively suppport
+      # NOTE: we don't try to instantiate and verify  a Date because ruby does not natively support
       # partial dates, which the FHIR standard allows.
     when 'datetime'
       !(value.to_s =~ /\A(-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?)\Z/).nil?
-      # NOTE: we don't try to instantiate and verify a DateTime because ruby does not natively suppport
+      # NOTE: we don't try to instantiate and verify a DateTime because ruby does not natively support
       # partial dates, which the FHIR standard allows.
     when 'time'
       !(value.to_s =~ /\A(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?)\Z/).nil?

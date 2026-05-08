@@ -84,7 +84,7 @@ RSpec.describe 'FHIR::Model' do
   end
 
   describe '.new' do
-    it 'can be instatiated with a simple hash' do
+    it 'can be instantiated with a simple hash' do
       range = FHIR::Range.new(low: {value: 18})
       expect(range.valid?).to be_truthy
       expect(range.low.value).to equal(18)

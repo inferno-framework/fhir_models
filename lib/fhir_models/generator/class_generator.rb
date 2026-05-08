@@ -47,7 +47,7 @@ module FHIR
         multiple_data_types = {}
 
         # examine the snapshot.elements... move the Element and BackboneElements,
-        # and their children, into separate StructureDefiniton hashes and process as
+        # and their children, into separate StructureDefinition hashes and process as
         # child templates.
         child_templates = []
         structure_def['snapshot']['element'].each do |element|
@@ -168,7 +168,7 @@ module FHIR
                              # the template/child class was declared somewhere else in this class hierarchy
                              klass.hierarchy.join('::')
                            else
-                             # the template/child is a direct ancester (it isn't in @templates yet because it is being defined now)
+                             # the template/child is a direct ancestor (it isn't in @templates yet because it is being defined now)
                              field.type.split('.').map { |x| cap_first(x) }.join('::')
                            end
             end
