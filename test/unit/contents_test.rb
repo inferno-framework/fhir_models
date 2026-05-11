@@ -1,5 +1,6 @@
 require_relative '../test_helper'
 require_relative '../../lib/fhir_models/r5'
+require_relative '../../lib/fhir_models/r6'
 require_relative '../../lib/fhir_models/r4b'
 
 class ContentsTest < Test::Unit::TestCase
@@ -77,6 +78,11 @@ class ContentsTest < Test::Unit::TestCase
     assert patient_xml_r5.id == 'example', 'Patient did not deserialize correctly.'
     assert patient_xml_r5.versioned_fhir_module == FHIR::R5
 
+    patient_xml_r6 = FHIR::R6.from_contents(xml)
+    assert !patient_xml_r6.nil?, 'From contents did not succeed with XML.'
+    assert patient_xml_r6.id == 'example', 'Patient did not deserialize correctly.'
+    assert patient_xml_r6.versioned_fhir_module == FHIR::R6
+
     # infer json
     patient_json= FHIR.from_contents(json)
     assert !patient_json.nil?, 'From contents did not succeed with JSON.'
@@ -92,5 +98,10 @@ class ContentsTest < Test::Unit::TestCase
     assert !patient_json_r5.nil?, 'From contents did not succeed with JSON.'
     assert patient_json_r5.id == 'example', 'Patient did not deserialize correctly.'
     assert patient_json_r5.versioned_fhir_module == FHIR::R5
+
+    patient_json_r6 = FHIR::R6.from_contents(json)
+    assert !patient_json_r6.nil?, 'From contents did not succeed with JSON.'
+    assert patient_json_r6.id == 'example', 'Patient did not deserialize correctly.'
+    assert patient_json_r6.versioned_fhir_module == FHIR::R6
   end
 end

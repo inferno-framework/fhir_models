@@ -19,6 +19,7 @@ module FHIR
         end
 
         self.shortName = url.split('/').last unless url.nil?
+        self.shortName = 'R6' if fhirVersions.include?('6.0.0-ballot2')
       end
     end
   end
